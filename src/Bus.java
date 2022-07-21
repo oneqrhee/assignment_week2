@@ -1,11 +1,13 @@
 public class Bus extends Transport {
-    int maxPassenger = 30;
     int presentPassenger;
-    String busStatus = "운행";
     int fee;
 
     public Bus(int id) {
         this.id = id;
+        this.fuel = 100;
+        this.speed = 0;
+        this.maxPassenger = 30;
+        this.status = "운행";
         System.out.println("a. 버스번호 = "+this.id);
     }
 
@@ -25,10 +27,10 @@ public class Bus extends Transport {
     public void getFuel(int fuel) {
         this.fuel += fuel;
         if (this.fuel < 10) {
-            this.busStatus = "차고지행";
+            this.status = "차고지행";
         }
         System.out.println("a. 주유량 = " + this.fuel);
-        System.out.println("b. 상태 = " + this.busStatus);
+        System.out.println("b. 상태 = " + this.status);
         if (this.fuel < 10) {
             System.out.println("주유 필요");
         }
@@ -36,10 +38,10 @@ public class Bus extends Transport {
 
     public void changeTransportStatus(String busStatus) {
         if (busStatus.equals("운행") && this.fuel < 10) {
-            this.busStatus = "차고지행";
+            this.status = "차고지행";
             System.out.println("주유량을 확인해주세요");
         } else {
-            this.busStatus = busStatus;
+            this.status = busStatus;
         }
     }
 }
